@@ -197,7 +197,7 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
          try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroCuidador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

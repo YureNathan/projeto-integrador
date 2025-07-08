@@ -39,8 +39,8 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         roundedPanel2 = new com.mycompany.projetoagendamedicamentos.RoundedPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BtnNaoTomado = new javax.swing.JButton();
+        BtnTomado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,18 +86,28 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
 
         roundedPanel2.setBackground(new java.awt.Color(221, 221, 221));
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("✗Não tomado");
-        jButton2.setBorder(null);
+        BtnNaoTomado.setBackground(new java.awt.Color(255, 102, 102));
+        BtnNaoTomado.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        BtnNaoTomado.setForeground(new java.awt.Color(255, 255, 255));
+        BtnNaoTomado.setText("✗Não tomado");
+        BtnNaoTomado.setBorder(null);
+        BtnNaoTomado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNaoTomadoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(153, 255, 153));
-        jButton3.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        jButton3.setForeground(java.awt.Color.white);
-        jButton3.setText("✓ Tomado");
-        jButton3.setBorder(null);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnTomado.setBackground(new java.awt.Color(153, 255, 153));
+        BtnTomado.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        BtnTomado.setForeground(java.awt.Color.white);
+        BtnTomado.setText("✓ Tomado");
+        BtnTomado.setBorder(null);
+        BtnTomado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnTomado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTomadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout roundedPanel2Layout = new javax.swing.GroupLayout(roundedPanel2);
         roundedPanel2.setLayout(roundedPanel2Layout);
@@ -105,19 +115,19 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
             roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnTomado, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addComponent(BtnNaoTomado, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addContainerGap())
         );
         roundedPanel2Layout.setVerticalGroup(
             roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(58, 58, 58)
                 .addGroup(roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50))
+                    .addComponent(BtnTomado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnNaoTomado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel3.add(roundedPanel2, java.awt.BorderLayout.CENTER);
@@ -163,6 +173,14 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnTomadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTomadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnTomadoActionPerformed
+
+    private void BtnNaoTomadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNaoTomadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnNaoTomadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -175,7 +193,7 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroCuidador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -184,8 +202,8 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton BtnNaoTomado;
+    private javax.swing.JButton BtnTomado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

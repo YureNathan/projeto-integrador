@@ -166,9 +166,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="BtnTomado" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jButton2" pref="137" max="32767" attributes="0"/>
+                          <Component id="BtnNaoTomado" pref="137" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -176,18 +176,18 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton3" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="BtnTomado" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="BtnNaoTomado" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="BtnNaoTomado">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="ff" type="rgb"/>
@@ -203,8 +203,11 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNaoTomadoActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="BtnTomado">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -221,6 +224,9 @@
                     </Property>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnTomadoActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

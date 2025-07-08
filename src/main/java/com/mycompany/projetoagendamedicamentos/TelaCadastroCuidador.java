@@ -11,12 +11,12 @@ import javax.swing.UIManager;
  *
  * @author Yure
  */
-public class TelaCadastroUsuario extends javax.swing.JFrame {
+public class TelaCadastroCuidador extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaCadastroUsuario
      */
-    public TelaCadastroUsuario() {
+    public TelaCadastroCuidador() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -177,14 +177,15 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroCuidador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastroUsuario().setVisible(true);
+                new TelaCadastroCuidador().setVisible(true);
             }
         });
     }
