@@ -11,14 +11,14 @@ import javax.swing.UIManager;
  *
  * @author yure
  */
-public class TelaMedicamentosDIa extends javax.swing.JFrame {
+public class TelaMedicamentosDia extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaMedicamentosDIa.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaMedicamentosDia.class.getName());
 
     /**
      * Creates new form TelaMedicamentosDIa
      */
-    public TelaMedicamentosDIa() {
+    public TelaMedicamentosDia() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -42,7 +42,7 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
         BtnNaoTomado = new javax.swing.JButton();
         BtnTomado = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medicamentos do Dia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter Light", 0, 14))); // NOI18N
 
@@ -198,7 +198,7 @@ public class TelaMedicamentosDIa extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TelaMedicamentosDIa().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TelaMedicamentosDia().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

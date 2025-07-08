@@ -51,9 +51,19 @@ public class TelaLoginCuidador extends javax.swing.JFrame {
 
         btnEntrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         BtnCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BtnCadastrar.setText("Cadastre-se");
+        BtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCadastrarActionPerformed(evt);
+            }
+        });
 
         txtdSenhaCuidador.setText("jPasswordField1");
 
@@ -105,6 +115,17 @@ public class TelaLoginCuidador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+        // fazer a verificação com banco se e-mail e senha estão corretas
+        new TelaDashboard().setVisible(true);
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void BtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarActionPerformed
+        // TODO add your handling code here:
+        new TelaCadastroCuidador().setVisible(true);
+    }//GEN-LAST:event_BtnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
