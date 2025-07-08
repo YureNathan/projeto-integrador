@@ -4,8 +4,13 @@
  */
 package com.mycompany.projetoagendamedicamentos;
 
+import bean.Medicamento;
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.MedicamentoDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +24,23 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
     public TelaCadastroMedicamento() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        mostrarTabela();
     }
-
+    public void mostrarTabela() {
+        DefaultTableModel tabela = (DefaultTableModel) tableMedicamentos.getModel();
+        tabela.setNumRows(0);
+        MedicamentoDAO mdao = new MedicamentoDAO();
+        
+        for(Medicamento m: mdao.exibir()) {
+            tabela.addRow(new Object[]{
+               m.getNome(),
+               m.getDosagem(),
+               m.getUnidade(),
+               m.getDescricao()
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,12 +60,13 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txdDescricaoMedicamento = new javax.swing.JTextField();
         btnSalvarMedicamento = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMedicamentos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Medicamentos");
+        setTitle("MedTrack - Cadastro de Medicamentos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Medicamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 14))); // NOI18N
 
@@ -61,8 +82,27 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Descrição:");
 
+        txdDescricaoMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdDescricaoMedicamentoActionPerformed(evt);
+            }
+        });
+
         btnSalvarMedicamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalvarMedicamento.setText("Salvar");
+        btnSalvarMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarMedicamentoActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,7 +129,9 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvarMedicamento)
-                .addGap(37, 37, 37))
+                .addGap(18, 18, 18)
+                .addComponent(btnVoltar)
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,9 +152,11 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txdDescricaoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(btnSalvarMedicamento)
-                .addGap(38, 38, 38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvarMedicamento)
+                    .addComponent(btnVoltar))
+                .addGap(31, 31, 31))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medicamentos Cadastrados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Light", 0, 14))); // NOI18N
@@ -125,16 +169,9 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
                 "Nome", "Dosagem", "Unidade", "Descrição"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -185,6 +222,40 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        new TelaDashboard().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarMedicamentoActionPerformed
+        // TODO add your handling code here:
+        Medicamento m = new Medicamento();
+        MedicamentoDAO dao = new MedicamentoDAO();
+        
+        m.setNome(txdNomeMedicamento.getText());
+        m.setDosagem(Double.parseDouble(txdDosagemMedicamento.getText()));
+        m.setUnidade(txdUnidadeMedicamento.getText());
+        m.setDescricao(txdDescricaoMedicamento.getText());
+        
+        try {
+            dao.inserir(m);
+            mostrarTabela();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar dados!");
+        }
+        txdNomeMedicamento.setText("");
+        txdDosagemMedicamento.setText("");
+        txdUnidadeMedicamento.setText("");
+        txdDescricaoMedicamento.setText("");
+        
+    }//GEN-LAST:event_btnSalvarMedicamentoActionPerformed
+
+    private void txdDescricaoMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdDescricaoMedicamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdDescricaoMedicamentoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,6 +282,7 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvarMedicamento;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

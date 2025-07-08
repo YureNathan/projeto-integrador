@@ -37,7 +37,7 @@ public class TelaLoginCuidador extends javax.swing.JFrame {
         txtdSenhaCuidador = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login Cuidador");
+        setTitle("MedTrack - Login Cuidador");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -120,11 +120,13 @@ public class TelaLoginCuidador extends javax.swing.JFrame {
         // TODO add your handling code here:
         // fazer a verificação com banco se e-mail e senha estão corretas
         new TelaDashboard().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void BtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrarActionPerformed
         // TODO add your handling code here:
         new TelaCadastroCuidador().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BtnCadastrarActionPerformed
 
     /**
