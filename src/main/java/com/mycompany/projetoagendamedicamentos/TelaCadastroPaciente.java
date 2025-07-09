@@ -4,7 +4,11 @@
  */
 package com.mycompany.projetoagendamedicamentos;
 
+import bean.Paciente;
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.PacienteDAO;
+import java.sql.SQLDataException;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -84,8 +88,19 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Alergias:");
 
+        txdAlergiaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdAlergiaPacienteActionPerformed(evt);
+            }
+        });
+
         btnSalvarCadastroPaciente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSalvarCadastroPaciente.setText("Salvar");
+        btnSalvarCadastroPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarCadastroPacienteActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnVoltar.setText("Voltar");
@@ -100,10 +115,7 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalvarCadastroPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -122,9 +134,12 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txdNomePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                             .addComponent(txdEnderecoPaciente)
-                            .addComponent(txdTelefonePaciente)
+                            .addComponent(txdTelefonePaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                             .addComponent(txdCPFPaciente)
-                            .addComponent(txdAlergiaPaciente))))
+                            .addComponent(txdAlergiaPaciente)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvarCadastroPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnVoltar)
                 .addGap(510, 510, 510))
@@ -169,16 +184,9 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
                 "Nome", "CPF", "Telefone", "Endereço", "Alergias"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -227,6 +235,36 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvarCadastroPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCadastroPacienteActionPerformed
+        // TODO add your handling code here:
+        
+        Paciente p = new Paciente();
+        PacienteDAO dao = new PacienteDAO();
+        
+        p.setNome_paciente(txdNomePaciente.getText());
+        p.setCpf_paciente((txdCPFPaciente.getText()));
+        p.setTelefone_paciente(txdTelefonePaciente.getText());
+        p.setEndereco_paciente(txdEnderecoPaciente.getText());
+        p.setAlergias_paciente(txdAlergiaPaciente.getText());
+        
+        try {
+            dao.inserir(p);
+            
+        }catch(SQLDataException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar dados "+ e);
+        }
+        txdNomePaciente.setText("");
+        txdCPFPaciente.setText("");
+        txdTelefonePaciente.setText("");
+        txdEnderecoPaciente.setText("");
+        txdAlergiaPaciente.setText("");
+        
+    }//GEN-LAST:event_btnSalvarCadastroPacienteActionPerformed
+
+    private void txdAlergiaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdAlergiaPacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdAlergiaPacienteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class ConexaoBancoMysql {
     private static final String URL = "jdbc:mysql://localhost:3306/Agenda_Medicamentos";
     private static final String USUARIO = "root";
-    private static final String SENHA = "root";
+    private static final String SENHA = "root123@";
 
     public static Connection conectar() {
         try {
@@ -14,5 +14,7 @@ public class ConexaoBancoMysql {
         } catch (SQLException e) {
             throw new RuntimeException("Erro na conexão com o banco: " + e.getMessage());
         }
+        
     }
+   
 }

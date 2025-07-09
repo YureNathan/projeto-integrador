@@ -73,6 +73,12 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome:");
 
+        txdNomeMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdNomeMedicamentoActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Dosagem:");
 
@@ -124,7 +130,7 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txdDescricaoMedicamento)))
+                        .addComponent(txdDescricaoMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -255,6 +261,10 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
     private void txdDescricaoMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdDescricaoMedicamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txdDescricaoMedicamentoActionPerformed
+
+    private void txdNomeMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdNomeMedicamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdNomeMedicamentoActionPerformed
 
     /**
      * @param args the command line arguments

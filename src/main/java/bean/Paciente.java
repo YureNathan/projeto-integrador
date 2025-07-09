@@ -10,7 +10,7 @@ package bean;
  */
 public class Paciente {
     private int id_paciente;
-    private long cpf_paciente;
+    private String cpf_paciente;
     private String nome_paciente;
     private String telefone_paciente;
     private String endereco_paciente; 
@@ -24,11 +24,11 @@ public class Paciente {
         this.id_paciente = id_paciente;
     }
 
-    public long getCpf_paciente() {
+    public String getCpf_paciente() {
         return cpf_paciente;
     }
 
-    public void setCpf_paciente(int cpf_paciente) {
+    public void setCpf_paciente(String cpf_paciente) {
         this.cpf_paciente = cpf_paciente;
     }
 
