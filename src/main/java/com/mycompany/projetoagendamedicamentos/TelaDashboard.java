@@ -5,6 +5,8 @@
 package com.mycompany.projetoagendamedicamentos;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.DoseMedicamentoDAO;
+import java.util.Map;
 import javax.swing.UIManager;
 
 /**
@@ -19,7 +21,27 @@ public class TelaDashboard extends javax.swing.JFrame {
     public TelaDashboard() {
         initComponents();
         setLocationRelativeTo(null);
+        atualizarContadores();
     }
+ private void atualizarContadores() {
+    int idPaciente = 1;
+
+    DoseMedicamentoDAO dao = new DoseMedicamentoDAO();
+    Map<String, Integer> contadores = dao.contarPorStatus(idPaciente);
+
+    int totalTomado = contadores.get("tomado");
+    int totalPendente = contadores.get("pendente");
+    int totalEsquecido = contadores.get("esquecido");
+
+
+    lblTomados.setText(String.valueOf(totalTomado));   
+    lblPendente.setText(String.valueOf(totalPendente)); 
+    lblEsquecido.setText(String.valueOf(totalEsquecido)); 
+    int total = totalTomado + totalPendente + totalEsquecido;
+    lblTotal.setText(String.valueOf(total)); 
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,20 +56,19 @@ public class TelaDashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         roundedPanel1 = new com.mycompany.projetoagendamedicamentos.RoundedPanel();
         labelMedicamentoTotais = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         roundedPanel2 = new com.mycompany.projetoagendamedicamentos.RoundedPanel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTomados = new javax.swing.JLabel();
         labelMedicamentoTomado = new javax.swing.JLabel();
         roundedPanel3 = new com.mycompany.projetoagendamedicamentos.RoundedPanel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPendente = new javax.swing.JLabel();
         labelMedicamentoPedente = new javax.swing.JLabel();
         roundedPanel4 = new com.mycompany.projetoagendamedicamentos.RoundedPanel();
-        labelMedicamentoEsquecido = new javax.swing.JLabel();
+        lblEsquecido = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         btnMedicamentosSemana = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,9 +89,9 @@ public class TelaDashboard extends javax.swing.JFrame {
         labelMedicamentoTotais.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMedicamentoTotais.setText("Medicamentos Totais");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(240, 242, 245));
-        jLabel2.setText("0");
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(240, 242, 245));
+        lblTotal.setText("0");
 
         javax.swing.GroupLayout roundedPanel1Layout = new javax.swing.GroupLayout(roundedPanel1);
         roundedPanel1.setLayout(roundedPanel1Layout);
@@ -82,14 +103,14 @@ public class TelaDashboard extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(roundedPanel1Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
-                .addComponent(jLabel2)
+                .addComponent(lblTotal)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel1Layout.setVerticalGroup(
             roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMedicamentoTotais, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -98,10 +119,10 @@ public class TelaDashboard extends javax.swing.JFrame {
         roundedPanel2.setBackground(new java.awt.Color(38, 198, 161));
         roundedPanel2.setPreferredSize(new java.awt.Dimension(186, 110));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(240, 242, 245));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("0");
+        lblTomados.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTomados.setForeground(new java.awt.Color(240, 242, 245));
+        lblTomados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTomados.setText("0");
 
         labelMedicamentoTomado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelMedicamentoTomado.setForeground(new java.awt.Color(240, 242, 245));
@@ -118,14 +139,14 @@ public class TelaDashboard extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(roundedPanel2Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addComponent(jLabel3)
+                .addComponent(lblTomados)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel2Layout.setVerticalGroup(
             roundedPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lblTomados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMedicamentoTomado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -133,10 +154,10 @@ public class TelaDashboard extends javax.swing.JFrame {
 
         roundedPanel3.setBackground(new java.awt.Color(255, 193, 73));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(240, 242, 245));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("0");
+        lblPendente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblPendente.setForeground(new java.awt.Color(240, 242, 245));
+        lblPendente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPendente.setText("0");
 
         labelMedicamentoPedente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelMedicamentoPedente.setForeground(new java.awt.Color(240, 242, 245));
@@ -153,14 +174,14 @@ public class TelaDashboard extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(roundedPanel3Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addComponent(jLabel5)
+                .addComponent(lblPendente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel3Layout.setVerticalGroup(
             roundedPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(lblPendente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMedicamentoPedente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
@@ -169,9 +190,9 @@ public class TelaDashboard extends javax.swing.JFrame {
         roundedPanel4.setBackground(new java.awt.Color(255, 102, 102));
         roundedPanel4.setPreferredSize(new java.awt.Dimension(186, 110));
 
-        labelMedicamentoEsquecido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelMedicamentoEsquecido.setForeground(new java.awt.Color(240, 242, 245));
-        labelMedicamentoEsquecido.setText("0");
+        lblEsquecido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblEsquecido.setForeground(new java.awt.Color(240, 242, 245));
+        lblEsquecido.setText("0");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 242, 245));
@@ -188,14 +209,14 @@ public class TelaDashboard extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
             .addGroup(roundedPanel4Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(labelMedicamentoEsquecido)
+                .addComponent(lblEsquecido)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         roundedPanel4Layout.setVerticalGroup(
             roundedPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roundedPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(labelMedicamentoEsquecido)
+                .addComponent(lblEsquecido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -219,14 +240,6 @@ public class TelaDashboard extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setText("Medicamentos do dia");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         btnMedicamentosSemana.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnMedicamentosSemana.setText("Medicamentos da Semana");
         btnMedicamentosSemana.addActionListener(new java.awt.event.ActionListener() {
@@ -240,15 +253,13 @@ public class TelaDashboard extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(56, 56, 56)
                 .addComponent(jButton1)
-                .addGap(28, 28, 28)
+                .addGap(51, 51, 51)
                 .addComponent(jButton2)
-                .addGap(34, 34, 34)
-                .addComponent(jButton3)
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
                 .addComponent(btnMedicamentosSemana)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +268,6 @@ public class TelaDashboard extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
                     .addComponent(btnMedicamentosSemana))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -321,12 +331,6 @@ public class TelaDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new TelaMedicamentosDia().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new TelaCadastroMedicamento().setVisible(true);
@@ -373,18 +377,17 @@ public class TelaDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnMedicamentosSemana;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel labelMedicamentoEsquecido;
     private javax.swing.JLabel labelMedicamentoPedente;
     private javax.swing.JLabel labelMedicamentoTomado;
     private javax.swing.JLabel labelMedicamentoTotais;
+    private javax.swing.JLabel lblEsquecido;
+    private javax.swing.JLabel lblPendente;
+    private javax.swing.JLabel lblTomados;
+    private javax.swing.JLabel lblTotal;
     private com.mycompany.projetoagendamedicamentos.RoundedPanel roundedPanel1;
     private com.mycompany.projetoagendamedicamentos.RoundedPanel roundedPanel2;
     private com.mycompany.projetoagendamedicamentos.RoundedPanel roundedPanel3;

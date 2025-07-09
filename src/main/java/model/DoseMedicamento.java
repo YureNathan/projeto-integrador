@@ -3,24 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.LocalDateTime;
 
 /**
  *
  * @author Yure
  */
 public class DoseMedicamento {
-    private int id;
-    private int idPaciente;
-    private int idMedicamento;
-    private LocalDate dataDose;
+ private int id;
+    private String nomeMedicamento;
     private LocalTime horarioDose;
     private String status;
-    private LocalDateTime dataconfirmacao;
-    private String nomeMedicamento; 
-    
+
     public int getId() {
         return id;
     }
@@ -29,28 +23,12 @@ public class DoseMedicamento {
         this.id = id;
     }
 
-    public int getIdPaciente() {
-        return idPaciente;
+    public String getNomeMedicamento() {
+        return nomeMedicamento;
     }
 
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public int getIdMedicamento() {
-        return idMedicamento;
-    }
-
-    public void setIdMedicamento(int idMedicamento) {
-        this.idMedicamento = idMedicamento;
-    }
-
-    public LocalDate getDataDose() {
-        return dataDose;
-    }
-
-    public void setDataDose(LocalDate dataDose) {
-        this.dataDose = dataDose;
+    public void setNomeMedicamento(String nomeMedicamento) {
+        this.nomeMedicamento = nomeMedicamento;
     }
 
     public LocalTime getHorarioDose() {
@@ -68,21 +46,4 @@ public class DoseMedicamento {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public LocalDateTime getDataconfirmacao() {
-        return dataconfirmacao;
-    }
-
-    public void setDataconfirmacao(LocalDateTime dataconfirmacao) {
-        this.dataconfirmacao = dataconfirmacao;
-    }
-
-    public String getNomeMedicamento() {
-        return nomeMedicamento;
-    }
-
-    public void setNomeMedicamento(String nomeMedicamento) {
-        this.nomeMedicamento = nomeMedicamento;
-    }
-    
 }
