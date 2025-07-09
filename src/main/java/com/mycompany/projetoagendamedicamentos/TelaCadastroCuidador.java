@@ -233,9 +233,7 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
         txdEmail.setText("");
         txdSenhaCuidador.setText("");
         txdConfirmarSenha.setText("");
-   
-    
-    
+
         
     }//GEN-LAST:event_BtnSalvarActionPerformed
 

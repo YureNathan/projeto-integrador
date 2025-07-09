@@ -19,7 +19,8 @@ public class DoseMedicamento {
     private LocalTime horarioDose;
     private String status;
     private LocalDateTime dataconfirmacao;
-
+    private String nomeMedicamento; 
+    
     public int getId() {
         return id;
     }
@@ -74,6 +75,14 @@ public class DoseMedicamento {
 
     public void setDataconfirmacao(LocalDateTime dataconfirmacao) {
         this.dataconfirmacao = dataconfirmacao;
+    }
+
+    public String getNomeMedicamento() {
+        return nomeMedicamento;
+    }
+
+    public void setNomeMedicamento(String nomeMedicamento) {
+        this.nomeMedicamento = nomeMedicamento;
     }
     
 }
