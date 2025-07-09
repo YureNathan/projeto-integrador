@@ -29,7 +29,7 @@ public class CuidadorDAO {
             
         } catch (Exception e) {
             
-            JOptionPane.showMessageDialog(null, "Erro ao inserir cuidadoor!"+e);
+            JOptionPane.showMessageDialog(null, "Erro ao inserir cuidador!"+e);
         }
         
     }

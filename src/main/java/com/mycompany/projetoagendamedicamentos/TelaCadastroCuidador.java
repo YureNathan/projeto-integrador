@@ -5,7 +5,10 @@
 package com.mycompany.projetoagendamedicamentos;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import dao.CuidadorDAO;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import model.Cuidador;
 
 /**
  *
@@ -42,6 +45,8 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
         txdTelefoneCuidador = new javax.swing.JFormattedTextField();
         txdSenhaCuidador = new javax.swing.JPasswordField();
         txdConfirmarSenha = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        txdEnderecoCuidador = new javax.swing.JTextField();
         BtnSalvar = new javax.swing.JButton();
         BtnVoltar = new javax.swing.JButton();
 
@@ -56,6 +61,12 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome:");
 
+        txdNomeCuidador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdNomeCuidadorActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Telefone: ");
 
@@ -68,15 +79,26 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("E-mail:");
 
+        txdEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdEmailActionPerformed(evt);
+            }
+        });
+
         try {
             txdTelefoneCuidador.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        txdSenhaCuidador.setText("jPasswordField1");
+        txdConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txdConfirmarSenhaActionPerformed(evt);
+            }
+        });
 
-        txdConfirmarSenha.setText("jPasswordField1");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Endereço: ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,6 +107,7 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
@@ -94,7 +117,8 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txdEmail)
                     .addComponent(txdSenhaCuidador)
-                    .addComponent(txdConfirmarSenha))
+                    .addComponent(txdConfirmarSenha)
+                    .addComponent(txdEnderecoCuidador))
                 .addContainerGap(152, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,22 +133,31 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txdTelefoneCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txdEnderecoCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txdEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txdSenhaCuidador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txdConfirmarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
 
         BtnSalvar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BtnSalvar.setText("Salvar");
+        BtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalvarActionPerformed(evt);
+            }
+        });
 
         BtnVoltar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         BtnVoltar.setText("Voltar para a tela de Login");
@@ -159,13 +192,13 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnSalvar)
                     .addComponent(BtnVoltar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,6 +209,47 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
         new TelaLoginCuidador().setVisible(true);
         dispose();
     }//GEN-LAST:event_BtnVoltarActionPerformed
+
+    private void BtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        CuidadorDAO cdao = new CuidadorDAO();
+        Cuidador c = new Cuidador();
+
+        try {
+            c.setNome_cuidador(txdNomeCuidador.getText());
+            c.setTelefone_cuidador(txdTelefoneCuidador.getText());
+            c.setEndereco_cuidador(txdEnderecoCuidador.getText());
+            c.setEmail_cuidador(txdEmail.getText());
+            c.setSenha_cuidador(new String(txdSenhaCuidador.getPassword()));
+            cdao.inserir(c);
+            JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar cadastro cuidador" + e);
+        }
+        txdNomeCuidador.setText("");
+        txdTelefoneCuidador.setText("");
+        txdEnderecoCuidador.setText("");
+        txdEmail.setText("");
+        txdSenhaCuidador.setText("");
+        txdConfirmarSenha.setText("");
+   
+    
+    
+        
+    }//GEN-LAST:event_BtnSalvarActionPerformed
+
+    private void txdNomeCuidadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdNomeCuidadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdNomeCuidadorActionPerformed
+
+    private void txdEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdEmailActionPerformed
+
+    private void txdConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txdConfirmarSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txdConfirmarSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,9 +285,11 @@ public class TelaCadastroCuidador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txdConfirmarSenha;
     private javax.swing.JTextField txdEmail;
+    private javax.swing.JTextField txdEnderecoCuidador;
     private javax.swing.JTextField txdNomeCuidador;
     private javax.swing.JPasswordField txdSenhaCuidador;
     private javax.swing.JFormattedTextField txdTelefoneCuidador;
