@@ -5,7 +5,7 @@
 package dao;
 
 import connection.ConexaoBancoMysql;
-import bean.Medicamento;
+import model.Medicamento;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +51,7 @@ public class MedicamentoDAO {
                 medicamentos.add(m);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao listar Medicamentos");
+            JOptionPane.showMessageDialog(null, "Erro ao listar Medicamentos"+ e);
         }
         return medicamentos;
     }

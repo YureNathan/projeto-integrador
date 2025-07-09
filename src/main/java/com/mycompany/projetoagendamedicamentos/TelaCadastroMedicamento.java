@@ -4,7 +4,7 @@
  */
 package com.mycompany.projetoagendamedicamentos;
 
-import bean.Medicamento;
+import model.Medicamento;
 import com.formdev.flatlaf.FlatLightLaf;
 import dao.MedicamentoDAO;
 import java.sql.SQLException;
