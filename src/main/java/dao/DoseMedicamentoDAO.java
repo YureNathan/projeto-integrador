@@ -22,10 +22,12 @@ import model.DoseMedicamento;
  * @author Yure
  */
 public class DoseMedicamentoDAO {
-     public void inserir(DoseMedicamento d) throws SQLException {
+
+    public void inserir(DoseMedicamento d) throws SQLException {
         String sql = "INSERT INTO DOSE_MEDICAMENTO (id_paciente, cod_medicamento, data_dose, horario_dose, status, data_confirmacao) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = ConexaoBancoMysql.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)){
+        try (Connection conn = ConexaoBancoMysql.conectar(); 
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, d.getIdPaciente());
             stmt.setInt(2, d.getIdMedicamento());
@@ -37,14 +39,13 @@ public class DoseMedicamentoDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "erro ao adicionar medicamento " + e);
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar medicamento: " + e);
         }
-        
-        
-       public List <DoseMedicamento> listarDosesDoDia(int idPaciente){
+    }
+
+    public List<DoseMedicamento> listarDosesDoDia(int idPaciente) {
         List<DoseMedicamento> lista = new ArrayList<>();
         String sql = """
-                     
                      SELECT dm.*, nome_medicamento
                      FROM DOSE_MEDICAMENTO dm
                      JOIN MEDICAMENTOS m ON dm.cod_medicamento = m.cod_medicamento
@@ -72,10 +73,9 @@ public class DoseMedicamentoDAO {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "erro ao listar!" +e);
+            JOptionPane.showMessageDialog(null, "Erro ao listar: " + e);
         }
 
         return lista;
-    }
     }
 }
