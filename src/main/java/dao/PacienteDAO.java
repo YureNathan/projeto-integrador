@@ -22,13 +22,14 @@ import javax.swing.JOptionPane;
 public class PacienteDAO {
 
     public void inserir(Paciente p) throws SQLDataException {
-        String sql = "INSERT INTO PACIENTES (cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO PACIENTES (cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente, alergias_paciente) VALUES (?,?,?,?,?)";
 
         try (Connection conn = ConexaoBancoMysql.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, p.getCpf_paciente());
             stmt.setString(2, p.getNome_paciente());
             stmt.setString(3, p.getTelefone_paciente());
             stmt.setString(4, p.getEndereco_paciente());
+            stmt.setString(5, p.getAlergias_paciente());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Paciente salvo com sucesso!");
         } catch (Exception e) {

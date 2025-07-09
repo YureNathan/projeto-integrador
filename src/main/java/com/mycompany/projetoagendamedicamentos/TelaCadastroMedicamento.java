@@ -24,7 +24,6 @@ public class TelaCadastroMedicamento extends javax.swing.JFrame {
     public TelaCadastroMedicamento() {
         initComponents();
         setLocationRelativeTo(null);
-        
         mostrarTabela();
     }
     public void mostrarTabela() {

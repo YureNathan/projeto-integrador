@@ -10,7 +10,7 @@ import dao.PacienteDAO;
 import java.sql.SQLDataException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Yure
@@ -23,8 +23,26 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
     public TelaCadastroPaciente() {
         initComponents();
         setLocationRelativeTo(null);
+        mostrarTabela();
+        
     }
-
+    public void mostrarTabela() {
+         DefaultTableModel tabela = (DefaultTableModel) TablePacienteCadastrado.getModel();
+         tabela.setNumRows(0);
+         PacienteDAO pdao = new PacienteDAO();
+         
+         for(Paciente p: pdao.exibir()) {
+              tabela.addRow(new Object[] {
+                  p.getNome_paciente(),
+                  p.getCpf_paciente(),
+                  p.getTelefone_paciente(),
+                  p.getEndereco_paciente(),
+                  p.getAlergias_paciente()
+              });
+        
+         }
+        
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,6 +211,13 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(TablePacienteCadastrado);
+        if (TablePacienteCadastrado.getColumnModel().getColumnCount() > 0) {
+            TablePacienteCadastrado.getColumnModel().getColumn(0).setResizable(false);
+            TablePacienteCadastrado.getColumnModel().getColumn(1).setResizable(false);
+            TablePacienteCadastrado.getColumnModel().getColumn(2).setResizable(false);
+            TablePacienteCadastrado.getColumnModel().getColumn(3).setResizable(false);
+            TablePacienteCadastrado.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -250,6 +275,7 @@ public class TelaCadastroPaciente extends javax.swing.JFrame {
         
         try {
             dao.inserir(p);
+            mostrarTabela();
             
         }catch(SQLDataException e) {
             JOptionPane.showMessageDialog(null, "Erro ao salvar dados "+ e);

@@ -1,5 +1,10 @@
-com/mycompany/projetoagendamedicamentos/TelaCadastroMedicamento$6.class
-com/mycompany/projetoagendamedicamentos/TelaCadastroPaciente$4.class
-com/mycompany/projetoagendamedicamentos/TelaCadastroPaciente$5.class
-connection/TestaConexao.class
-com/mycompany/projetoagendamedicamentos/TelaMedicamentosDia.class
+com\mycompany\projetoagendamedicamentos\TelaCadastroPaciente$5.class
+model\AgendaMedicamento.class
+com\mycompany\projetoagendamedicamentos\TelaMedicamentosDia.class
+com\mycompany\projetoagendamedicamentos\TelaCadastroMedicamento$6.class
+connection\TestaConexao.class
+model\Paciente.class
+com\mycompany\projetoagendamedicamentos\TelaCadastroPaciente$4.class
+model\Cuidador.class
+model\DoseMedicamento.class
+model\Medicamento.class
